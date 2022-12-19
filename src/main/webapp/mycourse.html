@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link href="./css/frame.css" rel="stylesheet">
+    <link href="./css/element.css" rel="stylesheet">
+    <script>
+        var srcURL = "http://localhost:8080/develop/course/all";
+        var jsonData;
+        var jsonDatas = {
+    "result": {
+        "0": [
+            {
+                "score": 0.0,
+                "enrollYear": 2019,
+                "types": "전공선택",
+                "grade": "P",
+                "enrollSemester": 2,
+                "name": "기초프로그래밍",
+                "id": "CSE2014",
+                "credit": 3,
+                "studentSemester": 2
+            },
+            {
+                "score": 4.5,
+                "enrollYear": 2020,
+                "types": "전공선택",
+                "grade": "A+",
+                "enrollSemester": 1,
+                "name": "자료구조와실습",
+                "id": "CSE2017",
+                "credit": 3,
+                "studentSemester": 3
+            },
+            {
+                "score": 4.5,
+                "enrollYear": 2020,
+                "types": "전공필수",
+                "grade": "A+",
+                "enrollSemester": 1,
+                "name": "이산구조",
+                "id": "CSE2026",
+                "credit": 3,
+                "studentSemester": 3
+            },
+            {
+                "score": 4.5,
+                "enrollYear": 2020,
+                "types": "전공선택",
+                "grade": "A+",
+                "enrollSemester": 1,
+                "name": "객체지향프로그래밍",
+                "id": "CSE2027",
+                "credit": 3,
+                "studentSemester": 3
+            },
+            {
+                "score": 4.5,
+                "enrollYear": 2020,
+                "types": "전공필수 설계",
+                "grade": "A+",
+                "enrollSemester": 1,
+                "name": "어드벤처디자인",
+                "id": "CSE2028",
+                "credit": 3,
+                "studentSemester": 3
+            },
+            {
+                "score": 4.5,
+                "enrollYear": 2019,
+                "types": "BSM ",
+                "grade": "A+",
+                "enrollSemester": 1,
+                "name": "미적분학및연습1",
+                "id": "PRI4001",
+                "credit": 3,
+                "studentSemester": 1
+            },
+            {
+                "score": 4.5,
+                "enrollYear": 2019,
+                "types": "BSM  과학",
+                "grade": "A+",
+                "enrollSemester": 1,
+                "name": "일반물리학및실험1",
+                "id": "PRI4002",
+                "credit": 4,
+                "studentSemester": 1
+            },
+            {
+                "score": 4.5,
+                "enrollYear": 2019,
+                "types": "BSM ",
+                "grade": "A+",
+                "enrollSemester": 2,
+                "name": "미적분학및연습2",
+                "id": "PRI4012",
+                "credit": 3,
+                "studentSemester": 2
+            },
+            {
+                "score": 4.5,
+                "enrollYear": 2019,
+                "types": "BSM  과학",
+                "grade": "A+",
+                "enrollSemester": 2,
+                "name": "일반물리학및실험2",
+                "id": "PRI4013",
+                "credit": 4,
+                "studentSemester": 2
+            },
+            {
+                "score": 4.5,
+                "enrollYear": 2020,
+                "types": "BSM ",
+                "grade": "A+",
+                "enrollSemester": 1,
+                "name": "확률및통계학",
+                "id": "PRI4023",
+                "credit": 3,
+                "studentSemester": 3
+            },
+            {
+                "score": 4.5,
+                "enrollYear": 2020,
+                "types": "기본소양",
+                "grade": "A+",
+                "enrollSemester": 1,
+                "name": "공학경제",
+                "id": "PRI4041",
+                "credit": 3,
+                "studentSemester": 3
+            },
+            {
+                "score": 4.0,
+                "enrollYear": 2019,
+                "types": "공통교양",
+                "grade": "A",
+                "enrollSemester": 2,
+                "name": "불교와인간",
+                "id": "RGC0003",
+                "credit": 2,
+                "studentSemester": 2
+            },
+            {
+                "score": 4.5,
+                "enrollYear": 2019,
+                "types": "공통교양",
+                "grade": "A+",
+                "enrollSemester": 1,
+                "name": "기술보고서작성및발표",
+                "id": "RGC0005",
+                "credit": 3,
+                "studentSemester": 1
+            },
+            {
+                "score": 0.0,
+                "enrollYear": 2019,
+                "types": "공통교양",
+                "grade": "P",
+                "enrollSemester": 1,
+                "name": "자아와명상1",
+                "id": "RGC0017",
+                "credit": 1,
+                "studentSemester": 1
+            },
+            {
+                "score": 0.0,
+                "enrollYear": 2019,
+                "types": "공통교양",
+                "grade": "P",
+                "enrollSemester": 2,
+                "name": "자아와명상2",
+                "id": "RGC0018",
+                "credit": 1,
+                "studentSemester": 2
+            },
+            {
+                "score": 0.0,
+                "enrollYear": 2019,
+                "types": "공통교양 리더십",
+                "grade": "P",
+                "enrollSemester": 2,
+                "name": "테크노앙트레프레너십과리더십",
+                "id": "RGC1052",
+                "credit": 2,
+                "studentSemester": 2
+            },
+            {
+                "score": 4.5,
+                "enrollYear": 2019,
+                "types": "공통교양",
+                "grade": "A+",
+                "enrollSemester": 1,
+                "name": "EAS1",
+                "id": "RGC1080",
+                "credit": 2,
+                "studentSemester": 1
+            },
+            {
+                "score": 3.5,
+                "enrollYear": 2019,
+                "types": "공통교양",
+                "grade": "B+",
+                "enrollSemester": 2,
+                "name": "EAS2",
+                "id": "RGC1081",
+                "credit": 2,
+                "studentSemester": 2
+            }
+        ],
+        "1": [
+            {
+                "score": 0.0,
+                "enrollYear": 2,
+                "types": "전공필수",
+                "grade": "I",
+                "enrollSemester": 2022,
+                "name": "시스템소프트웨어와실습",
+                "id": "CSE2013",
+                "credit": 3,
+                "studentSemester": 4
+            },
+            {
+                "score": 0.0,
+                "enrollYear": 2,
+                "types": "전공선택",
+                "grade": "I",
+                "enrollSemester": 2022,
+                "name": "웹프로그래밍",
+                "id": "CSE2015",
+                "credit": 3,
+                "studentSemester": 4
+            },
+            {
+                "score": 0.0,
+                "enrollYear": 2,
+                "types": "전공필수",
+                "grade": "I",
+                "enrollSemester": 2022,
+                "name": "계산적사고법",
+                "id": "CSE2025",
+                "credit": 3,
+                "studentSemester": 4
+            },
+            {
+                "score": 0.0,
+                "enrollYear": 2,
+                "types": "전공선택",
+                "grade": "I",
+                "enrollSemester": 2022,
+                "name": "컴퓨터알고리즘과실습",
+                "id": "CSE4029",
+                "credit": 3,
+                "studentSemester": 4
+            },
+            {
+                "score": 0.0,
+                "enrollYear": 2,
+                "types": "전공선택",
+                "grade": "I",
+                "enrollSemester": 2022,
+                "name": "데이터베이스프로그래밍",
+                "id": "CSE4041",
+                "credit": 3,
+                "studentSemester": 4
+            }
+        ],
+        "2": [
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "컴퓨터구성",
+                "id": "CSE2018",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "심화프로그래밍",
+                "id": "CSE2022",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "프로그래밍언어개념",
+                "id": "CSE2024",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "형식언어",
+                "id": "CSE4031",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "운영체제",
+                "id": "CSE4033",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "인공지능",
+                "id": "CSE4036",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "데이터베이스시스템",
+                "id": "CSE4037",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "데이터통신입문",
+                "id": "CSE4038",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "컴퓨터네트워킹",
+                "id": "CSE4043",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "컴퓨터보안",
+                "id": "CSE4044",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "객체지향설계와패턴",
+                "id": "CSE4051",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "모바일컴퓨팅",
+                "id": "CSE4053",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "소프트웨어공학개론",
+                "id": "CSE4058",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "컴퓨터그래픽스입문",
+                "id": "CSE4060",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "S/W품질관리및테스팅",
+                "id": "CSE4061",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "컴퓨터공학종합설계1",
+                "id": "CSE4066",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "컴퓨터공학종합설계2",
+                "id": "CSE4067",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "인간컴퓨터상호작용시스템",
+                "id": "CSE4073",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "공개SW프로젝트",
+                "id": "CSE4074",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "SW비즈니스와창업",
+                "id": "CSE4075",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "테크니컬프리젠테이션",
+                "id": "CSE4076",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "암호학과네트워크보안",
+                "id": "CSE4081",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "데이터분석및실습",
+                "id": "CSE4082",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "양자컴퓨팅",
+                "id": "CSE4083",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "바이오인포메틱스알고리즘",
+                "id": "CSE4086",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "현장실습",
+                "id": "CSE8000",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "바이오빅데이터분석특론",
+                "id": "CSE9000",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "블록체인보안",
+                "id": "CSE9001",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "클라우드컴퓨팅",
+                "id": "CSE9003",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "로봇프로그래밍",
+                "id": "CSE9004",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "바이오빅데이터분석알고리즘",
+                "id": "CSE9005",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "시큐어코딩",
+                "id": "CSE9006",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "빅데이터분석",
+                "id": "CSE9007",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "개별연구(1)",
+                "id": "DES_3_1",
+                "credit": 1,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "개별연구(2)",
+                "id": "DES_3_2",
+                "credit": 1,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "개별연구(3)",
+                "id": "DES_3_3",
+                "credit": 1,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "공학윤리",
+                "id": "EGC4039",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "기술창조와특허",
+                "id": "EGC7026",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "일반화학및실험1",
+                "id": "PRI4003",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "일반생물학및실험1",
+                "id": "PRI4004",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "일반생물학및실험2",
+                "id": "PRI4015",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "공학선형대수학",
+                "id": "PRI4024",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "공학수학1",
+                "id": "PRI4025",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "생물학개론",
+                "id": "PRI4028",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "물리학개론",
+                "id": "PRI4029",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "화학개론",
+                "id": "PRI4030",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "지구환경과학",
+                "id": "PRI4033",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "수치해석과실습",
+                "id": "PRI4036",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "소셜앙트레프리너십과리더십",
+                "id": "RGC1050",
+                "credit": 2,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "글로벌앙트레프레너십과리더십",
+                "id": "RGC1051",
+                "credit": 2,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "커리어디자인",
+                "id": "RGC1074",
+                "credit": 1,
+                "studentSemester": 0
+            }
+        ],
+        "3": [
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "전공선택",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "컴퓨터구조",
+                "id": "CSE4034",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "전공선택",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "컴파일러구성",
+                "id": "CSE4035",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "전공선택",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "임베디드소프트웨어입문",
+                "id": "CSE4070",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "전공선택 학석박공통",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "머신러닝",
+                "id": "CSE4085",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "전공선택 학석박공통",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "사물인터넷",
+                "id": "CSE9002",
+                "credit": 3,
+                "studentSemester": 0
+            },
+            {
+                "score": 0,
+                "enrollYear": 0,
+                "types": "BSM  과학",
+                "grade": null,
+                "enrollSemester": 0,
+                "name": "일반화학및실험2",
+                "id": "PRI4014",
+                "credit": 3,
+                "studentSemester": 0
+            }
+        ]
+    },
+    "success": true,
+    "message": "성공"
+    };
+
+        var arr = new Array(100);
+        for (var i = 0; i < arr.length; i++) {
+        arr[i] = new Array();
+        }
+
+        var arr1 = new Array(100);
+        for(var i = 0; i < arr.length; i++) {
+            arr1[i] = new Array();
+        }
+
+        var arr2 = new Array(100);
+        for(var i = 0; i < arr.length; i++) {
+            arr2[i] = new Array();
+        }
+
+        var last_year = "2000";
+        var last_semester = "1";
+        var st_grade = "N";
+        var st_semester = "S";
+        var s_grade="N학년 S학기";
+        var ss_grade;
+
+
+        //main 문
+        $(document).ready(function () {
+            $("#global-Nav").load("navbar.html");
+            getJson();
+        });
+
+        function newCourse() {
+            $( 'div#addCourse' ).remove();
+            var newForm = "<form class=\"newForm\" action=\"course/single\" method=\"get\">"
+                + "<div class=\"course-info-label\">학수번호 : " + "<input type=\"text\" name=\"courseNumber\" /></div>"
+                + "<div class=\"course-info-label\">성적입력 : " + "<input type=\"text\" name=\"grade\" /></div>"
+                + "<input  type=\"hidden\" name=\"enrollYear\"/ value=\"" + last_year + "\">"
+                + "<input type=\"hidden\" name=\"enrollSemester\" value=\"" + last_semester + "\"/>"
+                + "<input type=\"hidden\" name=\"studentSemester\" value=\"" + ss_grade +"\"/>"
+                + "<input class=\"newform-btn\" type=\"submit\" value=\"등록\"/>"
+                + "</form>";
+
+            $("#dt").append(newForm);
+        }
+
+        function getJson() {$.ajax({
+			url : srcURL,
+			type : "get",
+			datatype : "json",
+			success : function(data) {
+                //0.JSON 파싱
+                console.log(data);
+
+                //1.들었던 과목 파싱 - arr
+                for (var i = 0;i < data.result[0].length; i++) {
+                    var index = data.result[0][i].studentSemester;
+                    arr[index].push(data.result[0][i]);
+                }
+                //2.듣고있는 과목 파싱 - arr1
+                for (var i = 0; i < data.result[1].length; i++) {
+                    var index = data.result[1][i].studentSemester;
+                    arr1[index].push(data.result[1][i]);
+                }
+                //3.들을 수 있는 과목 파싱 - arr2
+                for (var i = 0; i < data.result[2].length; i++) {
+                    var index = data.result[2][i].studentSemester;
+                    arr1[index].push(data.result[2][i]);
+                }
+                loadSemster();
+			}
+		});}
+
+        function loadDetails(e) {
+            $( 'div#dt' ).remove();
+            var i = $(e).find('span:eq(0)').attr('id');
+            last_year = $(e).find('span:eq(0)').attr('class');
+            last_semester = $(e).find('span:eq(1)').attr('class');
+            ss_grade = $(e).find('span:eq(2)').attr('class');
+
+            $( '#course-detail' ).append("<div id=\"dt\"></div>");
+            for(var j = 0; j<arr[i].length; j++) {
+                console.log(arr[i][j].types);
+                var detailUnit =
+                "<div class=\"course-detail-unit\">"
+                + "<div class=\"course-info c_name\">"
+                +    arr[i][j].name +
+                "</div>"
+                + "<div class=\"course-info c_delete\">"
+                +   "<div class=\"c-delete\">X</div>"
+                + "</div>"
+                + "<div class=\"course-info-label\">학수번호 : </div>"
+                + "<div class=\"course-info c_cid\">"
+                   + arr[i][j].id
+                + "</div>"
+                + "<div class=\"course-info-label\">과목구분 : </div>"
+                + "<div class=\"course-info c_category\">" + arr[i][j].types
+                + "</div>"
+                + "<div class=\"course-info-label\">학점 : </div>"
+                + "<div class=\"course-info c_credit\">"
+                + arr[i][j].credit
+                    + "</div id=\"qweqwe\">"
+                    + "<div class=\"course-info-label\">성적 : </div>"
+                    + "<select class=\"course-info c_semester\" name=\"semester\""
+                    + "value=\"" + arr[i][j].grade + "\">"
+                        + "<option value=\"A+\">A+</option>"
+                        + "<option value=\"A\">A</option>"
+                        + "<option value=\"B+\">B+</option>"
+                        + "<option value=\"B\">B</option>"
+                        + "<option value=\"C+\">C+</option>"
+                        + " <option value=\"C\">C</option>"
+                    + "<option value=\"D+\">D+</option>"
+                    + " <option value=\"D\">D</option>"
+                    + " <option value=\"F\">F</option>"
+                    + "<option value=\"P\">P</option>"
+                    + "<option value=\"I\">I</option>"
+                    + "</select>"
+                    + "</div>"
+
+
+            $("#dt").append(detailUnit);
+            }
+            var addBTN = "<div id=\"addCourse\" class=\"add-course\"  onclick=\"newCourse()\">새 강좌 추가</div>";
+            $("#dt").append(addBTN);
+
+
+        }
+
+        function loadSemster() {
+            for(var i = 1; i<=8; i++) {
+                if(arr[i].length) {
+                    ss_grade = arr[i][0].studentSemester;
+                if(ss_grade == 1) s_grade = "1학년 1학기";
+                if(ss_grade == 2) s_grade = "1학년 2학기";
+                if(ss_grade == 3) s_grade = "2학년 1학기";
+                if(ss_grade == 4) s_grade = "2학년 2학기";
+                if(ss_grade == 5) s_grade = "3학년 1학기";
+                if(ss_grade == 6) s_grade = "3학년 2학기";
+                if(ss_grade == 7) s_grade = "4학년 1학기";
+                if(ss_grade == 8) s_grade = "4학년 2학기";
+                last_year = arr[i][0].enrollYear;
+                last_semester = arr[i][0].enrollSemester;
+
+                var unit = "<div class=\"course-list-unit\" onClick='loadDetails(this)'>"
+                + "<span id=\"" + ss_grade + "\" class=\""+last_year+"\">" + last_year + "년 " + last_semester + "학기" + "</span>"
+                + "<span class=\"" + last_semester + "\">&nbsp/&nbsp</span>"
+                + "<span class=\""+ss_grade+"\">" + s_grade + "</span>"
+                + "</div>";
+                $("#course-list").append(unit);
+                }
+            }
+            var newBTN = "<div id=\"addSemester\" onClick=\"addSemester()\"  class=\"add-semester\">새 학기 등록</div>";
+            $("#course-list").append(newBTN);
+        };
+
+        function addSemester() {
+            $( 'div#addSemester' ).remove();
+
+            if(last_semester == 2) {
+                last_year += 1;
+                last_semester = 1;
+            } else {
+                last_semester = 2;
+            }
+            ss_grade += 1;
+
+            if(ss_grade == 1) s_grade = "1학년 1학기";
+                if(ss_grade == 2) s_grade = "1학년 2학기";
+                if(ss_grade == 3) s_grade = "2학년 1학기";
+                if(ss_grade == 4) s_grade = "2학년 2학기";
+                if(ss_grade == 5) s_grade = "3학년 1학기";
+                if(ss_grade == 6) s_grade = "3학년 2학기";
+                if(ss_grade == 7) s_grade = "4학년 1학기";
+                if(ss_grade == 8) s_grade = "4학년 2학기";
+
+            var unit = "<div class=\"course-list-unit\" onClick='loadDetails(this)'>"
+                + "<span id=\"" + ss_grade + "\">" + last_year + "년 " + last_semester + "학기" + "</span>"
+                + "<span>&nbsp/&nbsp</span>"
+                + "<span>" + s_grade + "</span>"
+                + "</div>";
+            $("#course-list").append(unit);
+            var newBTN = "<div id=\"addSemester\" onClick=\"addSemester()\" class=\"add-semester\">새 학기 등록</div>";
+            $("#course-list").append(newBTN);
+        }
+
+
+    </script>
+</head>
+
+<body id="container" class="course-background">
+    <!-- navigation bar 영역 -->
+    <nav id="global-Nav"></nav>
+    <!-- main 영역 -->
+    <main id="mycourse" class="main_center">
+        <section id="course-list" class="course-list">
+            <div class="title-select-font">원하시는 학기를 선택해주세요</div>
+        </section>
+        <section id="course-detail" class="course-detail">
+            <div id="dt">
+        </div>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link href="css/frame.css" rel="stylesheet">
+    <link href="css/element.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="./static/img/aco.ico" />
+    
+    <script>
+        var signup_href = "signup.html";
+        var replaceNotInt = /[^0-9]/gi;
+
+        $(document).ready(function () {
+            $("#phone").on("focusout", function () {
+                var x = $(this).val();
+                if (x.length > 0) {
+                    if (x.match(replaceNotInt)) {
+                        x = x.replace(replaceNotInt, "");
+                    }
+                    $(this).val(x);
+                }
+            }).on("keyup", function () {
+                $(this).val($(this).val().replace(replaceNotInt, ""));
+            });
+
+            // 비밀번호 일치 검사
+            $("#pwd, #pwdr2").focusout(function () {
+                var pwd = $("#pwd").val();
+                var pwdr2 = $("#pwdr2").val();
+
+                if (pwd.length < 4) {
+                    $("#pwdVerify").css('padding', '5')
+                    $("#pwdVerify").text("비밀번호는 최소 4자리 이상이어야 합니다.");
+                    $("#pwd").focus();
+                } else {
+                    $("#pwdVerify").css('padding', '0')
+                    $("#pwdVerify").text("");
+                }
+
+                if (pwd != '' && pwdr2 == '') {
+                    null;
+                } else if (pwd != "" || pwdr2 != "") {
+                    if (pwd == pwdr2) {
+                        // 비밀번호 일치 이벤트 실행
+                        $("#pwdSameVerify").text("");
+                        $("#pwdSameVerify").css('padding', '0')
+                    } else {
+                        // 비밀번호 불일치 이벤트 실행
+                        $("#pwdSameVerify").css('padding', '5')
+                        $("#pwdSameVerify").text("⚠ 입력한 암호가 일치하지 않습니다.");
+                    }
+                }
+            });
+        })
+
+        function checkForm() {
+            var getCheck = RegExp(/^[a-zA-Z0-9]{4,12}$/);
+            var getName = RegExp(/^[가-힣]+$/);
+            var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정
+            var buf = new Array(13); //주민등록번호 배열
+
+            //아이디 공백 확인
+            if ($("#id").val() == "") {
+                alert("아이디를 입력해주세요");
+                $("#id").focus();
+                return false;
+            }
+
+            //비밀번호 공백 확인
+            if ($("#pwd").val() == "") {
+                alert("비밀번호를 입력해주세요");
+                $("#pwd").focus();
+                return false;
+            }
+
+            //비밀번호 확인란 공백 확인
+            if ($("#pwdr2").val() == "") {
+                alert("비밀번호 재확인란을 입력해주세요");
+                $("#pwdr2").focus();
+                return false;
+            }
+
+            //비밀번호 일치 검사
+            if ($("#pwd").val() != $("#pwdr2").val()) {
+                alert("입력한 암호가 일치하지 않습니다.");
+                $("#pwd").val("");
+                $("#pwdr2").val("");
+                $("#pwd").focus();
+                return false;
+            }
+
+            //비밀번호 유효성 검사
+            if ($("#pwd").val().length < 4) {
+                alert("비밀번호는 최소 4자리 이상이어야 합니다.");
+                $("#pwd").val("");
+                $("#pwd").focus();
+                return false;
+            }
+
+            //이름 공백 검사
+            if ($("#name").val() == "") {
+                alert("이름을 입력해주세요");
+                $("#name").focus();
+                return false;
+            }
+
+            //학번 공백 검사
+            if ($("#sid").val() == "") {
+                alert("학번을 입력해주세요");
+                $("#sid").focus();
+                return false;
+            }
+
+            //전공 공백 확인
+            if ($("#major").val() == "") {
+                alert("전공을 입력해주세요");
+                $("#major").focus();
+                return false;
+            }
+
+            //휴대전화 공백 확인
+            if ($("#phone").val() == "") {
+                alert("전화번호를 입력해주세요");
+                $("#phone").focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body id="container" class="signup background-img">
+    <!-- main 영역 -->
+    <main class="layer_fade">
+        <section class="section_center">
+            <div class="signup-subtitle">졸업하는 그 날 까지</div>
+            <div class="signup-title">AKO EKO</div>
+
+            <form method="post" action="Signup" onsubmit="return checkForm()">
+                <div class="signup-font">아이디</div>
+                <input id="id" class="signup-field" type="text" name="id">
+                <div class="signup-font">비밀번호</div>
+                <input id="pwd" class="signup-field" type="password" name="pwd">
+                <div id="pwdVerify"></div>
+                <div class="signup-font">비밀번호 재확인</div>
+                <input id="pwdr2" class="signup-field" type="password" name="pwdr2">
+                <div id="pwdSameVerify"></div>
+                <hr>
+
+                <div class="signup-font">이름</div>
+                <input id="name" class="signup-field" type="text" name="name">
+                <div class="signup-font">학번</div>
+                <input id="sid" class="signup-field" type="text" name="sid">
+                <div class="signup-font">학년/학기</div>
+                <select id="semester" class="signup-field" name="semester">
+                    <option value="1">1학년 1학기</option>
+                    <option value="2">1학년 2학기</option>
+                    <option value="3">2학년 1학기</option>
+                    <option value="4">2학년 2학기</option>
+                    <option value="5">3학년 1학기</option>
+                    <option value="6">3학년 2학기</option>
+                    <option value="7">4학년 1학기</option>
+                    <option value="8">4학년 2학기</option>
+                </select>
+                <div class="signup-font">전공</div>
+                <input id="major" class="signup-field" type="text" name="major">
+                <div class="signup-font">휴대전화</div>
+                <input id="phone" class="signup-field" type="text" name="phone">
+                <button id="signup" class="sign_btn" type="submit">가입하기</button>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
